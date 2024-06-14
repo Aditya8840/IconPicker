@@ -1,6 +1,7 @@
 import React from 'react'
 import Iconmodel from './Iconmodel';
 import { useState}  from 'react';
+import * as Icons from 'react-feather';
 import './Iconpicker.css'
 
 const IconPicker = () => {
@@ -31,8 +32,14 @@ const IconPicker = () => {
     return (
       <div className="App">
         <div className="icon-container" onClick={openPicker}>
-          {selectedIcon ? <span className="icon">{selectedIcon}</span> : 'Select Icon'}
-        </div>
+        {selectedIcon ? (
+          <span className="icon">
+            {React.createElement(Icons[selectedIcon])}
+          </span>
+        ) : (
+          'Select Icon'
+        )}
+      </div>
         {isPickerOpen && (
           <Iconmodel
             rowsInOnePage={5}
